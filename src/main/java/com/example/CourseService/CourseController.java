@@ -9,6 +9,7 @@ import com.example.CourseService.CourseService;
 import com.example.CourseService.UserDTO; // Import DTO
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*; // Annotations Web
@@ -29,6 +30,7 @@ public class CourseController {
 
  // GET /api/courses/{id}
  @GetMapping("/{id}")
+
  public ResponseEntity<Course> findCourseById(@PathVariable int id) {
      try {
          Course course = courseService.findByID(id);

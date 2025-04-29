@@ -9,6 +9,7 @@ import com.example.CourseService.UserServiceClient; // Import Feign Client
 import com.example.CourseService.UserDTO; // Import DTO
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,7 +30,7 @@ public class CourseService {
 
  @Autowired(required = false) // Mettre à false car user-service peut ne pas être démarré
  private UserServiceClient userServiceClient;
-
+ 
  public Course findByID(int courseId) {
      return courseRepository.findById(courseId)
              .orElseThrow(() -> new CourseNotFoundException("Course not found with id: " + courseId));
